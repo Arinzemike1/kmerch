@@ -1,0 +1,16 @@
+@import '../../styles/shared-styles';
+
+body{
+    background-color: #F4F5FA !important;
+}
+.main-layout {
+    margin-left: 17.5rem;
+	min-height: calc(100vh - 8rem);
+	padding: to-rem(20px) to-rem(20px);
+	
+	@include phone{
+	  margin-left: 0;
+	  padding: to-rem(10px) to-rem(20px);
+	  width: 100%;
+	}
+}

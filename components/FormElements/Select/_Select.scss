@@ -1,0 +1,18 @@
+@import '../../../stylesheets/shared-styles';
+
+select{
+  appearance: none;
+  background: $light-grey url("../../../static/icons/caret.svg") center right to-rem(15px) no-repeat;
+  border: 1px solid rgba($body-font-color, 0.2);
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: block;
+  line-height: to-rem(16px);
+  outline: none;
+  padding: to-rem(16px);
+  width: 100%;
+
+  .select{
+    @extend select;
+  }
+}

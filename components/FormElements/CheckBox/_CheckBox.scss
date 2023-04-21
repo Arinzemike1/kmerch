@@ -1,0 +1,60 @@
+@import '../../../stylesheets/shared-styles';
+
+
+.checkbox{
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: $dark-text;
+  cursor: pointer;
+  display: flex;
+  line-height: to-rem(24px);
+  margin: 0 0 to-rem(30px);
+  outline: none;
+  width: 100%;
+
+  input,
+  &__input{
+    appearance: none;
+    background: none;
+    border: 1px solid rgba($body-font-color, 0.3);
+    float: left;
+    position: relative;
+    transition: 0.3s;
+    width: 24px;
+
+    &::before{
+      content: "";
+      display: block;
+      height: 22px;
+      width: 22px;
+      box-sizing: border-box;
+    }
+
+    &::after{
+      content: "";
+      height: 6px;
+      left: 5px;
+      border: solid transparent;
+      border-width: 0 0 2px 2px;
+      position: absolute;
+      top: 6px;
+      transform: rotate(-45deg);
+      width: 13px;
+      box-sizing: border-box;
+    }
+
+    &:checked{
+      border-color: $secondary-color;
+      background: $secondary-color;
+
+      &::after{
+        border-color: $white;
+      }
+    }
+  }
+
+  &__label{
+    margin-left: 15px;
+    width: 100%;
+  }
+}

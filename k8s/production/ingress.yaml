@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  name: kpayinternational-ingress
+spec:
+  tls: 
+  - secretName: kongapay-co-uk-tls
+  defaultBackend:
+    service:
+      name: kongapay-international
+      port:
+        number: 80
+  rules:
+    - host: www.kongapay.co.uk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: kongapay-international
+                port:
+                  number: 80

@@ -1,0 +1,172 @@
+@import '../../styles/shared-styles';
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 0rem);
+  position: fixed;
+  // top: to-rem(70px);
+  transition: 0.3s ease-in;
+  background-color: $secondary-color;
+  width: 286px;
+  
+  @include custom-scroll();
+  
+  @include phone{
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 9;
+  }
+  
+  &__nav-trigger{
+    display: none;
+    
+	@include phone{
+      display: block;
+      padding: 0 to-rem(30px) 0 to-rem(20px);
+    }
+  
+    svg{
+      width: to-rem(14px);
+      *{
+        fill: $white !important;
+      }
+    }
+  }
+  
+  @include custom-scroll();
+
+  h6{
+    font-weight: $font-weight-bold;
+    margin: 0;
+    padding: to-rem(10px) to-rem(30px) to-rem(20px) to-rem(20px);
+    text-transform: uppercase;
+  }
+
+  .airgate-logo {
+    margin: 1.7rem 0 0 1.6rem;
+  }
+}
+.sub-menu {
+  font-size: 12px;
+  list-style: none;
+  color: #fff;
+  margin-left: -10px;
+}
+
+.main-menu{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item{
+    margin: 0 0 to-rem(10px);
+
+    a,
+    .main-menu__item{
+      font-family: 'Rubik', sans-serif;
+      background: transparent;
+      border-left: 3px solid transparent;
+      display: flex !important;
+      line-height: to-rem(15px);
+      text-decoration: none;
+      font-size: 13px;
+      margin-top: 3px;
+      color: #fff;
+      padding: 5px 10px;
+      transition: 0.3s;
+      width: 100%;
+
+      &.active{
+        background-color: #fff;
+        width: 90%;
+        border-radius: 8px;
+        color: $secondary-color;
+        font-weight: bold;
+        line-height: to-rem(25px);
+        margin-bottom: 6px;
+      }
+
+      // &:hover{
+      //   color: #fff;
+      // }
+    }
+  }
+
+  &__icon{
+    height: to-rem(24px);
+    margin-right: to-rem(11px);
+  }
+
+  &__dropdown.dropdown__content{
+    position: relative;
+  }
+
+  .bottom{
+    margin-top: auto;
+  }
+}
+
+.main-submenu{
+  display: block;
+  font-size: to-rem(16px);
+  list-style: none;
+  margin: 0 0 to-rem(20px);
+  padding: 0;
+
+  &__item{
+    margin: 0 0 to-rem(10px);
+    color: #fff
+
+    // a{
+    //   background: url("../../static/icons/submenu.svg") center left no-repeat;
+    //   border-left: 3px solid transparent;
+    //   display: block;
+    //   line-height: to-rem(24px);
+    //   margin-left: to-rem(20px);
+    //   padding: to-rem(10px) to-rem(30px) to-rem(10px) to-rem(44px);
+    //   transition: 0.3s;
+    //   width: 100%;
+
+    //   &.active{
+    //     background: url("../../static/icons/submenu-active.svg") center left no-repeat;
+    //     color: $secondary-color;
+    //   }
+    // }
+  }
+}
+
+#nav-drawer__trigger{
+  display: none;
+  text-indent: 99999;
+  
+  @include phone{
+    &:checked + .sidebar {
+      left: -100%;
+      transition: 0.3s ease-out;
+    }
+    &:checked ~ .pseudo-sidebar{
+      display: none;
+    }
+  }
+}
+
+.pseudo-sidebar{
+  display: none;
+  
+  @include phone{
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 9;
+    width: calc(100vw - 250px);
+    height: 100vh;
+  }
+}

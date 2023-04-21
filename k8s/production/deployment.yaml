@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kongapay-international
+  labels:
+    app: kongapay-international
+spec:
+  selector:
+    matchLabels:
+      app: kongapay-international
+  template:
+    metadata:
+      labels:
+        app: kongapay-international
+    spec:
+      nodeSelector:
+        kubernetes.azure.com/agentpool: default
+      containers:
+      - image: acrkongapayshared.azurecr.io/kongapay-international:latest
+        name: kongapay-international
+        ports:
+        - containerPort: 80
+          protocol: TCP
+          name: http
+        env:
+        - name: WEB_PORT
+          value: "7001"
+        - name: REACT_APP_BASE_URL
+          value: ""
+        - name: REACT_APP_APPLICATION_ENV
+          value: production
+  
